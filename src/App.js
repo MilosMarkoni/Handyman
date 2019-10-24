@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
 import './App.css';
 
 import 'primereact/resources/themes/nova-light/theme.css';
@@ -11,7 +13,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header></Header>
+        <Router>
+          <Header />
+
+          <Switch>
+            <Route path="/about"></Route>
+            <Route path="/users"></Route>
+            <Route path="/"></Route>
+          </Switch>
+        </Router>
       </div>
     );
   }
