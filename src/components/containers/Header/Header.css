@@ -1,0 +1,22 @@
+.ui-header-panel {
+  margin-bottom: 20px;
+}
+
+.ui-header-panel nav {
+  display: inline-block;
+  width: 400px;
+}
+
+.ui-header-panel li {
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.ui-header-panel li a {
+  display: block;
+  padding: 10px;
+}
+
+.ui-header-panel li:hover {
+  background-color: #ccc;
+}

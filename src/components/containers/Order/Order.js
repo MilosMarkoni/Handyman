@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default function Order() {
-  return <div>Order</div>;
+import { Panel } from 'primereact/panel';
+
+export default class Order extends Component {
+  render() {
+    return <Panel>Order</Panel>;
+  }
 }
