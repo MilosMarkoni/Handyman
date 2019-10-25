@@ -20,3 +20,9 @@
 .ui-header-panel li:hover {
   background-color: #ccc;
 }
+
+.logo {
+  width: 40px;
+  float: left;
+  margin-right: 10px;
+}

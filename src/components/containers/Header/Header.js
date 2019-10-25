@@ -10,12 +10,14 @@ import { InputText } from 'primereact/inputtext';
 import MyProfile from '../MyProfile/MyProfile';
 import Order from '../Order/Order';
 import Pricing from '../Pricing/Pricing';
+import Login from '../Login/Login';
 
 class Header extends Component {
   render() {
     return (
       <Router className="content-section implementation">
         <Panel className="ui-header-panel p-menubar">
+          <img className="logo" src={process.env.PUBLIC_URL + '/logo.png'} alt="img" />
           <nav>
             <ul>
               <li>
@@ -31,7 +33,10 @@ class Header extends Component {
           </nav>
           <div className="p-menubar-custom">
             <InputText placeholder="Search" type="text" />
-            <Button label="Logout" icon="pi pi-power-off" style={{ marginLeft: 4 }} />
+
+            <Link to="/login">
+              <Button label="Logout" icon="pi pi-power-off" style={{ marginLeft: 4 }} />
+            </Link>
           </div>
 
           <p className="clear"></p>
@@ -46,6 +51,9 @@ class Header extends Component {
           <Route path="/pricing">
             <Pricing />
           </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
         </Switch>
       </Router>
     );
@@ -53,16 +61,3 @@ class Header extends Component {
 }
 
 export default Header;
-
-// const items: [
-//   {
-//       label: 'Options',
-//       items: [{label: 'New', icon: 'pi pi-fw pi-plus',command:()=>{ window.location.hash="/fileupload"; }},
-//               {label: 'Delete', icon: 'pi pi-fw pi-trash', url: 'http://primetek.com.tr'}]
-//   },
-//   {
-//       label: 'Account',
-//       items: [{label: 'Options', icon: 'pi pi-fw pi-cog',command:()=>{ window.location.hash="/"; }},
-//               {label: 'Sign Out', icon: 'pi pi-fw pi-power-off'} ]
-//   }
-// ]

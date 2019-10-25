@@ -1,0 +1,11 @@
+body {
+}
+
+.p-grid.ui-login-panel {
+  height: 100vh;
+  margin: 0;
+}
+
+.p-grid input {
+  width: 100%;
+}

@@ -9,3 +9,8 @@ p.clear {
   padding: 0;
   margin: 0;
 }
+
+body,
+body * {
+  font-family: 'Open Sans', sans-serif;
+}

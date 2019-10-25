@@ -6,16 +6,28 @@ import { InputText } from 'primereact/inputtext';
 
 const data = [
   {
-    vin: '200',
-    year: '200',
+    serviceName: 'Lorem ipsum service',
+    price: '2200',
   },
   {
-    vin: '200',
-    year: '200',
+    serviceName: 'Lorem ipsum service',
+    price: '2200',
   },
   {
-    vin: '200',
-    year: '201',
+    serviceName: 'Lorem ipsum service',
+    price: '2200',
+  },
+  {
+    serviceName: 'Lorem ipsum service',
+    price: '2200',
+  },
+  {
+    serviceName: 'Lorem ipsum service',
+    price: '2200',
+  },
+  {
+    serviceName: 'Lorem ipsum service',
+    price: '2200',
   },
 ];
 
@@ -49,13 +61,13 @@ export default class Pricing extends Component {
             ref={el => (this.dt = el)}
             value={this.state.prices}
             paginator={true}
-            rows={10}
+            rows={5}
             header={header}
             globalFilter={this.state.globalFilter}
-            emptyMessage="No records found"
+            emptyMessage="Nema usluga"
           >
-            <Column field="vin" header="Vin" />
-            <Column field="year" header="Year" />
+            <Column field="serviceName" header="Naziv usluge" />
+            <Column field="price" header="Cena" style={{ width: '20%', textAlign: 'center' }} />
           </DataTable>
         </div>
       </div>
