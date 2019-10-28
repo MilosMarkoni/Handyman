@@ -6,7 +6,7 @@ import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import './App.css';
 
-import Header from './components/containers/Header/Header';
+import Header from './containers/Header/Header';
 
 class App extends Component {
   render() {

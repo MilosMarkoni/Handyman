@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './Header.css';
 
@@ -7,15 +7,12 @@ import { Panel } from 'primereact/panel';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 
-import MyProfile from '../MyProfile/MyProfile';
-import Order from '../Order/Order';
-import Pricing from '../Pricing/Pricing';
-import Login from '../Login/Login';
+import Routes from '../../Routes/Routes';
 
 class Header extends Component {
   render() {
     return (
-      <Router className="content-section implementation">
+      <div>
         <Panel className="ui-header-panel p-menubar">
           <img className="logo" src={process.env.PUBLIC_URL + '/logo.png'} alt="img" />
           <nav>
@@ -41,21 +38,8 @@ class Header extends Component {
 
           <p className="clear"></p>
         </Panel>
-        <Switch>
-          <Route exact path="/">
-            <MyProfile />
-          </Route>
-          <Route path="/order">
-            <Order />
-          </Route>
-          <Route path="/pricing">
-            <Pricing />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-        </Switch>
-      </Router>
+        <Routes />
+      </div>
     );
   }
 }
