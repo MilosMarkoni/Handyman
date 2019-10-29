@@ -6,14 +6,15 @@ import Order from '../containers/Order/Order';
 import Pricing from '../containers/Pricing/Pricing';
 import Login from '../containers/Login/Login';
 import PageNotFound from '../containers/PageNotFound/PageNotFound';
+import AppliedRoute from '../components/AppliedRoute/AppliedRoute';
 
-function Routes() {
+function Routes({ appProps }) {
   return (
     <Switch>
-      <Route exact path="/" component={MyProfile}></Route>
-      <Route path="/order" component={Order}></Route>
-      <Route path="/pricing" component={Pricing}></Route>
-      <Route path="/login" component={Login}></Route>
+      <AppliedRoute exact path="/" component={MyProfile} appProps={appProps} />
+      <AppliedRoute path="/order" component={Order} appProps={appProps} />
+      <AppliedRoute path="/pricing" component={Pricing} appProps={appProps} />
+      <AppliedRoute path="/login" exact component={Login} appProps={appProps} />
 
       <Route component={PageNotFound} />
     </Switch>

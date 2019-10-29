@@ -1,27 +1,48 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-import { Button } from 'primereact/button';
+import { Auth } from 'aws-amplify';
+
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
+import { Button } from 'primereact/button';
 
-import './Login.css';
+export default function Login(props) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-export default class Login extends Component {
-  render() {
-    return (
-      <div>
-        <div className="p-grid ui-login-panel p-align-center p-justify-center p-dir-col">
-          <div className="p-col-4">
-            <InputText placeholder="Username" />
-          </div>
-          <div className="p-col-4">
-            <Password placeholder="Password"></Password>
-          </div>
-          <div className="p-col-4 p-justify-end">
-            <Button label="Login" className="float"></Button>
-          </div>
+  const validateForm = () => email.length > 0 && password.length > 0;
+  const handleSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      await Auth.signIn(email, password);
+      props.userHasAuthenticated(true);
+    } catch (error) {
+      console.info(error);
+    }
+  };
+  return (
+    <div className="p-grid ui-login-panel p-align-center p-justify-center p-dir-col">
+      <form onSubmit={handleSubmit}>
+        <div className="p-col-4">
+          <InputText
+            autoFocus
+            value={email}
+            placeholder="Email"
+            onChange={e => setEmail(e.target.value)}
+          />
         </div>
-      </div>
-    );
-  }
+        <div className="p-col-4">
+          <Password
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          ></Password>
+        </div>
+        <div className="p-col-4 p-justify-end">
+          <Button label="Login" disabled={!validateForm()} type="submit" className="float"></Button>
+        </div>
+      </form>
+    </div>
+  );
 }
