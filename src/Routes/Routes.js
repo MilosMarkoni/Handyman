@@ -6,16 +6,18 @@ import Order from '../containers/Order/Order';
 import Pricing from '../containers/Pricing/Pricing';
 import Login from '../containers/Login/Login';
 import PageNotFound from '../containers/PageNotFound/PageNotFound';
-import AppliedRoute from '../components/AppliedRoute/AppliedRoute';
+import SignUp from '../containers/SignUp/SignUp';
+import AuthenticatedRoute from '../components/AuthenticatedRoute/AuthenticatedRoute';
+import UnauthenticatedRoute from '../components/UnauthenticatedRoute/UnauthenticatedRoute';
 
 function Routes({ appProps }) {
   return (
     <Switch>
-      <AppliedRoute exact path="/" component={MyProfile} appProps={appProps} />
-      <AppliedRoute path="/order" component={Order} appProps={appProps} />
-      <AppliedRoute path="/pricing" component={Pricing} appProps={appProps} />
-      <AppliedRoute path="/login" exact component={Login} appProps={appProps} />
-
+      <AuthenticatedRoute exact path="/" component={MyProfile} appProps={appProps} />
+      <AuthenticatedRoute path="/order" component={Order} appProps={appProps} />
+      <AuthenticatedRoute path="/pricing" component={Pricing} appProps={appProps} />
+      <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
+      <UnauthenticatedRoute path="/signup" exact component={SignUp} appProps={appProps} />
       <Route component={PageNotFound} />
     </Switch>
   );

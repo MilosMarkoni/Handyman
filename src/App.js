@@ -21,10 +21,9 @@ function App() {
   async function onLoad() {
     try {
       await Auth.currentSession();
-
       userHasAuthenticated(true);
     } catch (e) {
-      console.info('error', e);
+      if (e !== 'No current user') console.info('error', e);
     }
 
     setIsAuthenticating(false);
