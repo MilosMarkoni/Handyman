@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import { TabView, TabPanel } from 'primereact/tabview';
 import { Chart } from 'primereact/chart';
+import { Card } from 'primereact/card';
 
 import './MyProfile.css';
-import { Panel } from 'primereact/panel';
+import LeftMenu from '../Layout/LeftMenu.js/LeftMenu';
 
 export default class MyProfile extends Component {
   render() {
@@ -21,17 +21,16 @@ export default class MyProfile extends Component {
 
     return (
       <div>
-        <div className="left-menu-layout">test</div>
-
-        {/* <Panel>
-          <Chart type="doughnut" data={data} />
-        </Panel>
-
-        <TabView>
-          <TabPanel header="Header I">Content I</TabPanel>
-          <TabPanel header="Header II">Content II</TabPanel>
-          <TabPanel header="Header III">Content III</TabPanel>
-        </TabView> */}
+        <LeftMenu></LeftMenu>
+        <div className="center-content-layout">
+          <div className="p-grid">
+            <div className="p-col-12 p-md-12 p-lg-7">
+              <Card>
+                <Chart type="doughnut" data={data} />
+              </Card>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

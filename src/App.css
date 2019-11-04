@@ -16,3 +16,9 @@ body * {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Open Sans', sans-serif;
 }
+
+body .p-card {
+  background: #ffffff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04), 0px 15px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}

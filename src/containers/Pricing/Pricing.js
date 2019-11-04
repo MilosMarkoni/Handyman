@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
+import LeftMenu from '../Layout/LeftMenu.js/LeftMenu';
 
 const data = [
   {
@@ -55,8 +56,9 @@ export default class Pricing extends Component {
     );
 
     return (
-      <div>
-        <div className="content-section implementation">
+      <>
+        <LeftMenu></LeftMenu>
+        <div className="center-content-layout">
           <DataTable
             ref={el => (this.dt = el)}
             value={this.state.prices}
@@ -70,7 +72,7 @@ export default class Pricing extends Component {
             <Column field="price" header="Cena" style={{ width: '20%', textAlign: 'center' }} />
           </DataTable>
         </div>
-      </div>
+      </>
     );
   }
 }
