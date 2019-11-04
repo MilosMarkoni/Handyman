@@ -4,7 +4,12 @@ import { useFormFields } from '../../libs/hooksLib';
 import { InputText } from 'primereact/inputtext';
 import LoaderButton from '../../components/LoaderButton/LoaderButton';
 import { Password } from 'primereact/password';
+import { Card } from 'primereact/card';
 import { Auth } from 'aws-amplify';
+
+import { Link } from 'react-router-dom';
+
+import './SignUp.css';
 
 function SignUp(props) {
   const [fields, handleFieldChange] = useFormFields({
@@ -58,45 +63,53 @@ function SignUp(props) {
     }
   };
 
+  const loginHeader = (
+    <div>
+      <div className="header-text">Create an account</div>
+      <div className="sub-header-text">
+        Already have an account? <Link to="/login">Log in</Link>
+      </div>
+    </div>
+  );
+
   const renderForm = () => (
-    <div className="p-grid ui-login-panel p-align-center p-justify-center p-dir-col">
-      <form onSubmit={handleSubmit}>
-        <div className="p-col-4">
+    <div className="form-wrapper">
+      <Card header={loginHeader}>
+        <form onSubmit={handleSubmit}>
+          <label>E-mail</label>
           <InputText
             autoComplete="new-email"
             onChange={handleFieldChange}
             value={fields.email}
             id="email"
-            placeholder="email"
           ></InputText>
-        </div>
-        <div className="p-col-4">
+
+          <label>Confirmation code</label>
           <Password
             autoComplete="new-password"
             onChange={handleFieldChange}
             value={fields.password}
             id="password"
-            placeholder="Confirmation code"
+            placeholder=""
           ></Password>
-        </div>
-        <div className="p-col-4">
+
+          <label>Confirm password</label>
           <Password
             feedback={false}
             onChange={handleFieldChange}
             value={fields.confirmPassword}
             id="confirmPassword"
-            placeholder="Confirm password"
+            placeholder=""
           ></Password>
-        </div>
-        <div className="p-col-4 p-justify-end">
+
           <LoaderButton
-            label="Signup"
+            label="Sign up"
             type="submit"
             isLoading={isLoading}
             disabled={!validateForm()}
           ></LoaderButton>
-        </div>
-      </form>
+        </form>
+      </Card>
     </div>
   );
 

@@ -7,6 +7,82 @@ body {
   margin: 0;
 }
 
-.p-grid input {
+.form-wrapper input {
   width: 100%;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.form-wrapper label {
+  font-size: 14px;
+  line-height: 14px;
+  color: #4a5568;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.form-wrapper a {
+  color: #5a67d8;
+  font-weight: 600;
+}
+
+.form-wrapper .p-card {
+  background: #ffffff;
+  /* Shadows/shadow-xl */
+
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04), 0px 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+.p-card {
+  display: block;
+  margin: 0 auto;
+  width: 520px;
+}
+
+.p-card-header {
+  padding: 50px 60px 0 60px;
+}
+
+.header-text {
+  font-size: 24px;
+  line-height: 24px;
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.sub-header-text {
+  font-size: 16px;
+  line-height: 150%;
+  color: #4a5568;
+}
+
+.p-card-body {
+  padding: 40px 60px;
+}
+
+.form-wrapper .p-button {
+  width: 100%;
+  background-color: #5a67d8;
+  border-radius: 8px;
+}
+
+.form-wrapper .p-button {
+  height: 48px;
+}
+.form-wrapper .p-button.p-button-text-only .p-button-text {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.form-wrapper .p-inputtext {
+  height: 48px;
+  box-sizing: border-box;
+}
+
+.form-wrapper .p-inputtext:enabled:hover {
+  border-color: #5a67d8;
 }
