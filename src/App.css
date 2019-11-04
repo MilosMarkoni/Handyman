@@ -12,5 +12,7 @@ p.clear {
 
 body,
 body * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-family: 'Open Sans', sans-serif;
 }

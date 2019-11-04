@@ -7,6 +7,13 @@ body {
   margin: 0;
 }
 
+.form-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .form-wrapper input {
   width: 100%;
   background: #f7fafc;

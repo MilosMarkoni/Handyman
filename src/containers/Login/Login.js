@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
 
 import { InputText } from 'primereact/inputtext';
+import { Card } from 'primereact/card';
 import { Password } from 'primereact/password';
 import LoaderButton from '../../components/LoaderButton/LoaderButton';
 import { useFormFields } from '../../libs/hooksLib';
+import { Link } from 'react-router-dom';
 
 export default function Login(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,16 +26,30 @@ export default function Login(props) {
     try {
       await Auth.signIn(fields.email, fields.password);
       props.userHasAuthenticated(true);
+
+      // force redirect to profile page
+      props.history.push('/');
     } catch (error) {
       console.info(error);
       setIsLoading(false);
     }
   };
 
+  const loginHeader = (
+    <div>
+      <div className="header-text">Log in</div>
+      <div className="sub-header-text">
+        Don't have an account? <Link to="/signup">Sign up</Link>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="p-grid ui-login-panel p-align-center p-justify-center p-dir-col">
-      <form onSubmit={handleSubmit}>
-        <div className="p-col-4">
+    <div className="form-wrapper">
+      <Card header={loginHeader}>
+        <form onSubmit={handleSubmit}>
+          <label>E-mail</label>
+
           <InputText
             id="email"
             autoFocus
@@ -41,25 +57,18 @@ export default function Login(props) {
             placeholder="Email"
             onChange={handleFieldChange}
           />
-        </div>
 
-        <div className="p-col-4">
-          <Password
-            id="password"
-            placeholder="Password"
-            value={fields.password}
-            onChange={handleFieldChange}
-          ></Password>
-        </div>
-        <div className="p-col-4 p-justify-end">
+          <label>Password</label>
+          <Password id="password" value={fields.password} onChange={handleFieldChange}></Password>
+
           <LoaderButton
-            label="Login"
+            label="Log in"
             type="submit"
             isLoading={isLoading}
             disabled={!validateForm()}
           ></LoaderButton>
-        </div>
-      </form>
+        </form>
+      </Card>
     </div>
   );
 }

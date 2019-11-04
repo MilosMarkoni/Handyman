@@ -7,3 +7,40 @@
   display: inline-block;
   margin: 0 20px 20px 0;
 }
+
+.left-menu-layout {
+  width: 300px;
+  height: calc(100vh - 70px);
+  display: none;
+  background-color: #2d3748;
+}
+
+@media (min-width: 1200px) {
+  .left-menu-layout {
+    display: inline-block;
+  }
+
+  .main-navigation li:not(:last-child) {
+    display: none;
+  }
+
+  .main-navigation li.desktop {
+    padding: 15px;
+  }
+
+  .ui-header-panel {
+    background-color: white;
+    color: black;
+  }
+
+  .ui-header-panel li,
+  .ui-header-panel li a {
+    color: #1a202c;
+  }
+
+  .logo-wrapper {
+    min-width: 300px;
+    background-color: #1a202c;
+    color: white;
+  }
+}

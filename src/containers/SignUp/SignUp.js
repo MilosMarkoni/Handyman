@@ -84,13 +84,12 @@ function SignUp(props) {
             id="email"
           ></InputText>
 
-          <label>Confirmation code</label>
+          <label>Password</label>
           <Password
             autoComplete="new-password"
             onChange={handleFieldChange}
             value={fields.password}
             id="password"
-            placeholder=""
           ></Password>
 
           <label>Confirm password</label>
@@ -99,7 +98,6 @@ function SignUp(props) {
             onChange={handleFieldChange}
             value={fields.confirmPassword}
             id="confirmPassword"
-            placeholder=""
           ></Password>
 
           <LoaderButton
@@ -114,25 +112,24 @@ function SignUp(props) {
   );
 
   const renderConfirmationForm = () => (
-    <div className="p-grid ui-login-panel p-align-center p-justify-center p-dir-col">
-      <form onSubmit={handleConfirmationSubmit}>
-        <div className="p-col-4">
+    <div className="form-wrapper">
+      <Card>
+        <form onSubmit={handleConfirmationSubmit}>
+          <label>Confirmation code</label>
           <InputText
             onChange={handleFieldChange}
             value={fields.confirmationCode}
             id="confirmationCode"
-            placeholder="Confirmation code"
+            placeholder=""
           ></InputText>
-        </div>
-        <div className="p-col-4 p-justify-end">
           <LoaderButton
             label="Verify"
             type="submit"
             isLoading={isLoading}
             disabled={!validateConfirmationForm()}
           ></LoaderButton>
-        </div>
-      </form>
+        </form>
+      </Card>
     </div>
   );
 
