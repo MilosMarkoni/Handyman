@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import { InputText } from 'primereact/inputtext';
+import { Card } from 'primereact/card';
+import { Button } from 'primereact/button';
 
 import LeftMenu from '../Layout/LeftMenu.js/LeftMenu';
 
@@ -11,32 +13,32 @@ export default class Order extends Component {
         <LeftMenu></LeftMenu>
         <div className="center-content-layout">
           <div className="p-grid">
-            <div className="p-col-12 p-md-6 p-lg-3">
-              <span className="p-float-label">
-                <InputText id="in" />
-                <label htmlFor="in">Username</label>
-              </span>
-            </div>
-            <div className="p-col-12 p-md-6 p-lg-3">
-              {' '}
-              <span className="p-float-label">
-                <InputText id="in" />
-                <label htmlFor="in">Username</label>
-              </span>
-            </div>
-            <div className="p-col-12 p-md-6 p-lg-3">
-              {' '}
-              <span className="p-float-label">
-                <InputText id="in" />
-                <label htmlFor="in">Username</label>
-              </span>
-            </div>
-            <div className="p-col-12 p-md-6 p-lg-3">
-              {' '}
-              <span className="p-float-label">
-                <InputText id="in" />
-                <label htmlFor="in">Username</label>
-              </span>
+            <div className="p-col-12 p-md-6 p-lg-5">
+              <Card>
+                <form>
+                  <div className="p-grid">
+                    <div className="p-col-12 p-md-6 p-lg-6">
+                      <label>First name</label>
+                      <InputText></InputText>
+                    </div>
+                    <div className="p-col-12 p-md-6 p-lg-6">
+                      <label>Last name </label>
+                      <InputText></InputText>
+                    </div>
+                    <div className="p-col-12 p-md-6 p-lg-6">
+                      <label>First name</label>
+                      <InputText></InputText>
+                    </div>
+                    <div className="p-col-12 p-md-6 p-lg-6">
+                      <label>First name</label>
+                      <InputText></InputText>
+                    </div>
+                    <div className="p-col-12">
+                      <Button label="ajmo button" className="submit-button"></Button>
+                    </div>
+                  </div>
+                </form>
+              </Card>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ export default function LeftMenu() {
             <i className="layout-menuitem-icon pi pi-fw pi-home"></i>Dashboard
           </li>
         </Link>
-        <Link to="/">
+        <Link to="/myprofile">
           <li>
             <i className="layout-menuitem-icon pi pi-fw pi-user"></i>My Profile
           </li>

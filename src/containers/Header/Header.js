@@ -88,7 +88,7 @@ class Header extends Component {
 
                     <li className="profile-pic desktop" onClick={e => this.op.toggle(e)}>
                       <img src={process.env.PUBLIC_URL + '/girl-pic.jpg'} alt="img" />
-                      <a href="#">Jane Doe</a>
+                      <a href="#test">Jane Doe</a>
                     </li>
                   </ul>
 
@@ -113,7 +113,7 @@ class Header extends Component {
                   <ul>
                     <li className="profile-pic">
                       <img src={process.env.PUBLIC_URL + '/girl-pic.jpg'} alt="img" />
-                      <a href="#">Jane Doe</a>
+                      <a href="#test">Jane Doe</a>
                     </li>
                     <li>
                       <Link to="/">Account</Link>
