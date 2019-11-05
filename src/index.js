@@ -27,9 +27,14 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: 'notes',
-        endpoint: config.apiGateway.URL,
-        region: config.apiGateway.REGION,
+        name: 'getMessages',
+        endpoint: config.apiGateway.getMessages.URL,
+        region: config.apiGateway.getMessages.REGION,
+      },
+      {
+        name: 'putMessage',
+        endpoint: config.apiGateway.putMessage.URL,
+        region: config.apiGateway.putMessage.REGION,
       },
     ],
   },

@@ -21,10 +21,6 @@ const queryString = (name, url = window.location.href) => {
 export default function UnauthenticatedRoute({ component: C, appProps, ...rest }) {
   const redirect = queryString('redirect');
 
-  console.log(redirect);
-
-  console.log(appProps.isAuthenticated);
-
   return (
     <Route
       {...rest}
