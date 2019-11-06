@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { API } from 'aws-amplify';
 
 import { useFormFields } from '../../libs/hooksLib';
@@ -12,7 +12,7 @@ import LoaderButton from '../../components/LoaderButton/LoaderButton';
 
 export default function Order() {
   let growl = '';
-
+  const [orders, setOrders] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [fields, handleFieldChange] = useFormFields({
     address: '',
@@ -23,13 +23,25 @@ export default function Order() {
   const validateForm = () => true;
 
   const postData = async dataBody => {
-    let apiName = 'putMessage';
+    let apiName = 'putOrder';
     let path = '/';
     let myInit = {
-      body: { ...dataBody },
+      body: dataBody,
     };
-    return await API.post(apiName, path, myInit);
+    await API.post(apiName, path, myInit);
   };
+
+  const getData = async () => {
+    let apiName = 'getOrders';
+    let path = '/';
+    let myInit = {};
+    const result = await API.get(apiName, path, myInit);
+    setOrders(result);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const handleSubmit = async event => {
     event.preventDefault();

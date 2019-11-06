@@ -27,14 +27,14 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: 'getMessages',
-        endpoint: config.apiGateway.getMessages.URL,
-        region: config.apiGateway.getMessages.REGION,
+        name: 'getOrders',
+        endpoint: config.apiGateway.getOrders.URL,
+        region: config.apiGateway.getOrders.REGION,
       },
       {
-        name: 'putMessage',
-        endpoint: config.apiGateway.putMessage.URL,
-        region: config.apiGateway.putMessage.REGION,
+        name: 'putOrder',
+        endpoint: config.apiGateway.putOrder.URL,
+        region: config.apiGateway.putOrder.REGION,
       },
     ],
   },
