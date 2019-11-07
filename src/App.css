@@ -32,7 +32,8 @@ label {
   display: inline-block;
 }
 
-input.p-inputtext {
+input.p-inputtext,
+.p-calendar {
   width: 100%;
   background: #f7fafc;
   border: 1px solid #e2e8f0;
@@ -48,4 +49,11 @@ input.p-inputtext:enabled:hover {
   width: 100%;
   background-color: #5a67d8;
   border-radius: 8px;
+}
+
+.p-card-header {
+  padding: 14px 14px 0 14px;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
 }

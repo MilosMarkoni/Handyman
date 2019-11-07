@@ -1,122 +1,138 @@
-import React, { useState, useEffect } from 'react';
-import { API } from 'aws-amplify';
+import React, { Component } from 'react';
 
-import { useFormFields } from '../../libs/hooksLib';
+import { API } from 'aws-amplify';
 
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Growl } from 'primereact/growl';
+import { Calendar } from 'primereact/calendar';
 
 import LeftMenu from '../Layout/LeftMenu.js/LeftMenu';
 import LoaderButton from '../../components/LoaderButton/LoaderButton';
 
-export default function Order() {
-  let growl = '';
-  const [orders, setOrders] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [fields, handleFieldChange] = useFormFields({
-    address: '',
-    dateJob: '',
-    additionalNotes: '',
-  });
+class Order extends Component {
+  constructor(props) {
+    super(props);
 
-  const validateForm = () => true;
-
-  const postData = async dataBody => {
-    let apiName = 'putOrder';
-    let path = '/';
-    let myInit = {
-      body: dataBody,
+    this.growl = '';
+    this.state = {
+      timeOfJob: '',
+      isLoading: false,
+      address: '',
+      additionalNotes: '',
+      jobStatus: false,
     };
-    await API.post(apiName, path, myInit);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.validateForm = this.validateForm.bind(this);
+  }
+
+  postData = async ({ address, timeOfJob, additionalNotes, jobStatus }) => {
+    try {
+      console.log(address, timeOfJob, additionalNotes, jobStatus);
+
+      let apiName = 'putOrder';
+      let path = '/';
+      let myInit = {
+        body: {
+          address,
+          timeOfJob,
+          additionalNotes,
+          jobStatus,
+        },
+      };
+      await API.post(apiName, path, myInit);
+    } catch (error) {
+      console.info(error);
+    }
   };
 
-  const getData = async () => {
-    let apiName = 'getOrders';
-    let path = '/';
-    let myInit = {};
-    const result = await API.get(apiName, path, myInit);
-    setOrders(result);
-  };
+  handleLoadingState = currentState => this.setState(() => ({ isLoading: currentState }));
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const handleSubmit = async event => {
+  handleSubmit = async event => {
     event.preventDefault();
 
-    setIsLoading(true);
-
+    this.handleLoadingState(true);
     try {
-      console.log(fields);
-      setIsLoading(false);
+      this.handleLoadingState(false);
 
-      await postData({ ...fields });
-      growl.show({
+      await this.postData(this.state);
+      this.growl.show({
         severity: 'success',
         summary: 'Success Message',
         detail: 'Order submitted',
       });
     } catch (error) {
       console.info(error);
-      setIsLoading(false);
+      this.handleLoadingState(false);
     }
   };
 
-  return (
-    <>
-      <Growl ref={el => (growl = el)} />
+  handleChange = event => this.setState({ [event.target.id]: event.target.value });
 
-      <LeftMenu></LeftMenu>
-      <div className="center-content-layout">
-        <div className="p-grid">
-          <div className="p-col-12 p-md-6 p-lg-5">
-            <Card>
-              <form onSubmit={handleSubmit}>
-                <div className="p-grid">
-                  <div className="p-col-12">
-                    <label>Address</label>
-                    <InputText
-                      id="address"
-                      autoFocus
-                      value={fields.address}
-                      onChange={handleFieldChange}
-                    ></InputText>
+  validateForm = () => true;
+
+  render() {
+    return (
+      <>
+        <Growl ref={el => (this.growl = el)} />
+        <LeftMenu></LeftMenu>
+        <div className="center-content-layout">
+          <div className="p-grid">
+            <div className="p-col-12 p-md-6 p-lg-5">
+              <Card header="Order now">
+                <form onSubmit={this.handleSubmit}>
+                  <div className="p-grid">
+                    <div className="p-col-12">
+                      <label>Address</label>
+                      <InputText
+                        id="address"
+                        autoFocus
+                        value={this.state.address}
+                        onChange={this.handleChange}
+                      ></InputText>
+                    </div>
+                    <div className="p-col-12">
+                      <label>Additional notes</label>
+                      <InputText
+                        id="additionalNotes"
+                        autoFocus
+                        name="additionalNotes"
+                        value={this.state.additionalNotes}
+                        onChange={this.handleChange}
+                      ></InputText>
+                    </div>
+                    <div className="p-col-12">
+                      <label>Time of job:</label>
+                      <Calendar
+                        id="timeOfJob"
+                        showTime={true}
+                        hourFormat="24"
+                        value={this.state.timeOfJob}
+                        onChange={this.handleChange}
+                        showButtonBar={true}
+                      ></Calendar>
+                    </div>
+
+                    <div className="p-col-12">
+                      <LoaderButton
+                        className="submit-button"
+                        label="Order"
+                        type="submit"
+                        isLoading={this.state.isLoading}
+                        disabled={!this.validateForm()}
+                      ></LoaderButton>
+                    </div>
                   </div>
-                  <div className="p-col-12">
-                    <label>Job date</label>
-                    <InputText
-                      id="dateJob"
-                      autoFocus
-                      value={fields.dateJob}
-                      onChange={handleFieldChange}
-                    ></InputText>
-                  </div>
-                  <div className="p-col-12">
-                    <label>Additional notes</label>
-                    <InputText
-                      id="additionalNotes"
-                      autoFocus
-                      value={fields.additionalNotes}
-                      onChange={handleFieldChange}
-                    ></InputText>
-                  </div>
-                  <div className="p-col-12">
-                    <LoaderButton
-                      className="submit-button"
-                      label="Order"
-                      type="submit"
-                      isLoading={isLoading}
-                      disabled={!validateForm()}
-                    ></LoaderButton>
-                  </div>
-                </div>
-              </form>
-            </Card>
+                </form>
+              </Card>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
+
+export default Order;

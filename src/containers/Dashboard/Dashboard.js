@@ -16,6 +16,11 @@ class Dashboard extends Component {
         },
       ],
     };
+
+    const options = {
+      rotation: 0.7 * Math.PI,
+      circumference: 1.6 * Math.PI,
+    };
     return (
       <>
         <LeftMenu></LeftMenu>
@@ -23,7 +28,7 @@ class Dashboard extends Component {
           <div className="p-grid">
             <div className="p-col-12 p-md-12 p-lg-4">
               <Card>
-                <Chart type="doughnut" data={data} />
+                <Chart type="doughnut" data={data} options={options} />
               </Card>
             </div>
           </div>

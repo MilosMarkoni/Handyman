@@ -36,7 +36,7 @@ class Header extends Component {
           >
             <div className="logo-wrapper">
               <img className="logo" src={process.env.PUBLIC_URL + '/logo.png'} alt="img" />
-              <div className="headerText">CompanyName</div>
+              {/* <div className="headerText">CompanyName</div> */}
 
               {this.state.collapsed ? (
                 <svg
