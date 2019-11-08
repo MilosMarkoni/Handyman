@@ -1,0 +1,20 @@
+.status-pending {
+  color: #007ad9;
+}
+
+.status-done {
+  color: #379a37;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-right {
+  top: 0;
+  right: 0;
+}

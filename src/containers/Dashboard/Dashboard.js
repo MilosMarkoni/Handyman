@@ -4,7 +4,66 @@ import LeftMenu from '../Layout/LeftMenu.js/LeftMenu';
 import { Chart } from 'primereact/chart';
 import { Card } from 'primereact/card';
 
+import { API } from 'aws-amplify';
+import JobWrapper from '../JobWrapper/JobWrapper';
+
+const mockData = [
+  {
+    orderId: '11c83050-a652-457e-b4af-31f632816d05',
+    address: 'Tailwind Street',
+    jobStatus: false,
+    timeOfJob: '2019-11-15T15:04:58.000Z',
+    additionalNotes: 'Bring wrench and screwdriver.',
+  },
+  {
+    orderId: 'b14cb428-6eb0-4745-9b1f-8ef31582cb93',
+    address: 'John Wailard 23',
+    jobStatus: true,
+    timeOfJob: '2019-11-15T15:04:58.000Z',
+    additionalNotes: 'Only after work hours.',
+  },
+  {
+    orderId: 'b14cb428-6eb0-4745-9b1f-8ef31582cb93',
+    address: 'John Wailard 23',
+    jobStatus: true,
+    timeOfJob: '2019-11-15T15:04:58.000Z',
+    additionalNotes: 'Only after work hours.',
+  },
+  {
+    orderId: 'b14cb428-6eb0-4745-9b1f-8ef31582cb93',
+    address: 'John Wailard 23',
+    jobStatus: false,
+    timeOfJob: '2019-11-15T15:04:58.000Z',
+    additionalNotes: 'Only after work hours.',
+  },
+];
+
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: mockData,
+    };
+  }
+  getData = async () => {
+    try {
+      let apiName = 'getOrders';
+      let path = '/';
+      let myInit = {
+        body: {},
+      };
+      const res = await API.get(apiName, path, myInit);
+      console.log(res);
+    } catch (error) {
+      console.info(error);
+    }
+  };
+
+  // componentDidMount = async () => {
+  //   console.log(this.state.data);
+  // };
+
   render() {
     const data = {
       labels: ['Spent', 'Credit'],
@@ -32,6 +91,8 @@ class Dashboard extends Component {
               </Card>
             </div>
           </div>
+
+          <JobWrapper data={this.state.data}></JobWrapper>
         </div>
       </>
     );
