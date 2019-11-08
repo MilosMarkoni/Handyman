@@ -5,7 +5,7 @@ import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 
 import './MyProfile.css';
-import LeftMenu from '../Layout/LeftMenu.js/LeftMenu';
+import LeftMenu from '../Layout/LeftMenu/LeftMenu';
 
 export default class MyProfile extends Component {
   render() {

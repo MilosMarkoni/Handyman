@@ -6,31 +6,31 @@ import { getTimeAndData } from '../../utils/utils';
 
 function JobWrapper(props) {
   const jobs = props.data.map(elem => (
-    <div key={elem.orderId} className="p-col-12 p-md-12 p-lg-4">
-      <Card className="relative">
+    <div key={elem.orderId} className="p-col-12 p-md-6 p-lg-4">
+      <Card className="relative no-body-padding">
+        <div className="price-wrapper">$4000</div>
         <div className="job-time-sheduled">{getTimeAndData(elem.timeOfJob)}</div>
-        <div className="job-status-wrapper" tooltip="test">
-          <i
-            title={elem.jobStatus ? 'Done' : 'Pending'}
-            class={`absolute top-right pi ${
-              elem.jobStatus ? 'pi-check status-done' : 'pi-pause status-pending'
-            } `}
-            style={{ fontSize: '3em' }}
-          ></i>
+        <i
+          title={elem.jobStatus ? 'Done' : 'Pending'}
+          className={`absolute top-right pi ${
+            elem.jobStatus ? 'pi-check status-done' : 'pi-pause status-pending'
+          } `}
+          style={{ fontSize: '3em' }}
+        ></i>
+
+        <div className="job-description">
+          <div className="address-wrapper">{elem.address}</div>
+          <div className="additional-notes-wrapper">{elem.additionalNotes}</div>
         </div>
-        <div className="address-wrapper">{elem.address}</div>
-        <div className="additional-notes-wrapper">{elem.additionalNotes}</div>
       </Card>
     </div>
   ));
 
-  return <div className="p-grid">{jobs}</div>;
+  return (
+    <div className="p-grid" style={{ marginTop: '0' }}>
+      {jobs}
+    </div>
+  );
 }
 
 export default JobWrapper;
-
-// "orderId": "11c83050-a652-457e-b4af-31f632816d05",
-// "address": "ss",
-// "jobStatus": false,
-// "timeOfJob": "2019-11-15T15:04:58.000Z",
-// "additionalNotes": "ss"

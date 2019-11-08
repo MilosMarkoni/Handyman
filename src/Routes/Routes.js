@@ -10,6 +10,7 @@ import SignUp from '../containers/SignUp/SignUp';
 import DashBoard from '../containers/Dashboard/Dashboard';
 import AuthenticatedRoute from '../components/AuthenticatedRoute/AuthenticatedRoute';
 import UnauthenticatedRoute from '../components/UnauthenticatedRoute/UnauthenticatedRoute';
+import AdminDashboard from '../containers/AdminDashboard/AdminDashboard';
 
 function Routes({ appProps }) {
   return (
@@ -18,6 +19,7 @@ function Routes({ appProps }) {
       <AuthenticatedRoute exact path="/myprofile" component={MyProfile} appProps={appProps} />
       <AuthenticatedRoute path="/order" component={Order} appProps={appProps} />
       <AuthenticatedRoute path="/pricing" component={Pricing} appProps={appProps} />
+      <AuthenticatedRoute path="/admindashboard" component={AdminDashboard} appProps={appProps} />
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={SignUp} appProps={appProps} />
       <Route component={PageNotFound} />

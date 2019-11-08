@@ -1,0 +1,7 @@
+.left-menu-layout {
+}
+
+.left-menu-layout li span,
+.left-menu-layout li i {
+  vertical-align: middle;
+}

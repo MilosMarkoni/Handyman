@@ -7,7 +7,7 @@ import { InputText } from 'primereact/inputtext';
 import { Growl } from 'primereact/growl';
 import { Calendar } from 'primereact/calendar';
 
-import LeftMenu from '../Layout/LeftMenu.js/LeftMenu';
+import LeftMenu from '../Layout/LeftMenu/LeftMenu';
 import LoaderButton from '../../components/LoaderButton/LoaderButton';
 
 class Order extends Component {
@@ -30,8 +30,6 @@ class Order extends Component {
 
   postData = async ({ address, timeOfJob, additionalNotes, jobStatus }) => {
     try {
-      console.log(address, timeOfJob, additionalNotes, jobStatus);
-
       let apiName = 'putOrder';
       let path = '/';
       let myInit = {

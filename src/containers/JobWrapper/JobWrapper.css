@@ -14,7 +14,23 @@
   position: absolute;
 }
 
+.price-wrapper {
+  font-size: 18px;
+  padding: 8px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.job-time-sheduled {
+  display: inline-block;
+  color: #999;
+}
+
 .top-right {
   top: 0;
   right: 0;
+}
+
+.job-description {
+  padding: 0 8px 8px 8px;
 }

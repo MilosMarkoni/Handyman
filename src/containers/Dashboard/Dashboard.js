@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LeftMenu from '../Layout/LeftMenu.js/LeftMenu';
+import LeftMenu from '../Layout/LeftMenu/LeftMenu';
 
 import { Chart } from 'primereact/chart';
 import { Card } from 'primereact/card';
@@ -9,28 +9,28 @@ import JobWrapper from '../JobWrapper/JobWrapper';
 
 const mockData = [
   {
-    orderId: '11c83050-a652-457e-b4af-31f632816d05',
+    orderId: '11c83050-a652-457e-b4af-31f632816ds05',
     address: 'Tailwind Street',
     jobStatus: false,
     timeOfJob: '2019-11-15T15:04:58.000Z',
     additionalNotes: 'Bring wrench and screwdriver.',
   },
   {
-    orderId: 'b14cb428-6eb0-4745-9b1f-8ef31582cb93',
+    orderId: 'b14cb428-6eb0-4745-9b1f-8ef31582csb93',
     address: 'John Wailard 23',
     jobStatus: true,
     timeOfJob: '2019-11-15T15:04:58.000Z',
     additionalNotes: 'Only after work hours.',
   },
   {
-    orderId: 'b14cb428-6eb0-4745-9b1f-8ef31582cb93',
+    orderId: 'b14cb428-6eb0-4745-9b1f-8ef31582acb93',
     address: 'John Wailard 23',
     jobStatus: true,
     timeOfJob: '2019-11-15T15:04:58.000Z',
     additionalNotes: 'Only after work hours.',
   },
   {
-    orderId: 'b14cb428-6eb0-4745-9b1f-8ef31582cb93',
+    orderId: 'b14cb428-6eb0-4745-9b1f-8ef31d582cb93',
     address: 'John Wailard 23',
     jobStatus: false,
     timeOfJob: '2019-11-15T15:04:58.000Z',
@@ -44,6 +44,7 @@ class Dashboard extends Component {
 
     this.state = {
       data: mockData,
+      jobs: [],
     };
   }
   getData = async () => {
@@ -53,16 +54,16 @@ class Dashboard extends Component {
       let myInit = {
         body: {},
       };
-      const res = await API.get(apiName, path, myInit);
-      console.log(res);
+      return await API.get(apiName, path, myInit);
     } catch (error) {
       console.info(error);
     }
   };
 
-  // componentDidMount = async () => {
-  //   console.log(this.state.data);
-  // };
+  componentDidMount = async () => {
+    // const fetchedJobs = await this.getData();
+    // this.setState({ jobs: fetchedJobs });
+  };
 
   render() {
     const data = {

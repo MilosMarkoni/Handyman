@@ -36,6 +36,11 @@ Amplify.configure({
         endpoint: config.apiGateway.putOrder.URL,
         region: config.apiGateway.putOrder.REGION,
       },
+      {
+        name: 'updateOrder',
+        endpoint: config.apiGateway.updateOrder.URL,
+        region: config.apiGateway.updateOrder.REGION,
+      },
     ],
   },
 });

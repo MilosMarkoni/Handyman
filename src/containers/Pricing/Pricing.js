@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
-import LeftMenu from '../Layout/LeftMenu.js/LeftMenu';
+import LeftMenu from '../Layout/LeftMenu/LeftMenu';
 
 const data = [
   {
